@@ -1,0 +1,48 @@
+<section id="reviews" class="section-pad" style="background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-max">
+    <div class="section-label">{{ section.settings.label }}</div>
+    <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        <div class="review-card" {{ block.shopify_attributes }}>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"{{ block.settings.review_text }}"</p>
+          <div class="review-name">
+            {{ block.settings.reviewer_name }}
+            <span class="review-verified">— Verified Buyer</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "Real Men. Real Results." },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "2,400+\n5-STAR REVIEWS." }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "review_text", "label": "Review Text", "default": "I've been using this for about 5 weeks and honestly my jawline looks noticeably more defined." },
+        { "type": "text", "id": "reviewer_name", "label": "Reviewer Name", "default": "Jake M." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "reviewer_name": "Jake M.", "review_text": "I've been using this for about 5 weeks and honestly my jawline looks noticeably more defined. My girlfriend even asked what I was doing differently. Solid product." } },
+        { "type": "review", "settings": { "reviewer_name": "Tyler R.", "review_text": "Absorbs super fast, no greasy feeling. I use it after my morning shower and it doesn't mess with my beard products at all. Results are real — my neck skin is way tighter." } },
+        { "type": "review", "settings": { "reviewer_name": "Carlos V.", "review_text": "Was skeptical but gave it a full 28 days. The before/after difference is real. My jawline looks sharper and the puffiness under my chin is basically gone. Will keep buying." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

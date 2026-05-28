@@ -1,0 +1,47 @@
+<section id="howto" class="howto-section section-pad">
+  <div class="section-max">
+    <div class="section-label">{{ section.settings.label }}</div>
+    <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+    <p class="section-body">{{ section.settings.body }}</p>
+    <div class="howto-steps">
+      {% for block in section.blocks %}
+        <div class="howto-step" {{ block.shopify_attributes }}>
+          <div class="step-num">0{{ forloop.index }}</div>
+          <div class="step-title">{{ block.settings.title }}</div>
+          <div class="step-desc">{{ block.settings.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How To Use",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "How To Use" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "ROLL ON.\nLEVEL UP." },
+    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Three steps. Once a day. That's all it takes to start looking sharper." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Step Title", "default": "Cleanse & Dry" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Apply to clean, dry skin on the jawline, chin, and neck." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How To Use",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Cleanse & Dry", "description": "Apply to clean, dry skin on the jawline, chin, and neck. Pat skin dry before applying for maximum absorption." } },
+        { "type": "step", "settings": { "title": "Massage In", "description": "Using the applicator, massage gently in upward motions until the cream is fully absorbed into the skin." } },
+        { "type": "step", "settings": { "title": "Once Daily", "description": "Use once daily, morning or night. Consistency is key — results compound over your first 28-day cycle." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

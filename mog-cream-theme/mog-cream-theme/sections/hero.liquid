@@ -1,0 +1,94 @@
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="hero-headline">
+        {{ section.settings.headline | newline_to_br }}
+      </h1>
+      <p class="hero-sub">{{ section.settings.subheadline }}</p>
+      <div class="hero-actions">
+        <a href="{{ section.settings.primary_url }}" class="btn-primary">{{ section.settings.primary_cta }}</a>
+        <a href="{{ section.settings.secondary_url }}" class="btn-secondary">{{ section.settings.secondary_cta }}</a>
+      </div>
+      <div class="hero-stats">
+        {% for block in section.blocks %}
+          {% if block.type == 'stat' %}
+            <div>
+              <div class="stat-num">{{ block.settings.number }}</div>
+              <div class="stat-label">{{ block.settings.label }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="hero-product">
+      <div class="hero-product-box">
+        <div class="product-badge">{{ section.settings.badge }}</div>
+        {% if section.settings.product_image != blank %}
+          <img
+            src="{{ section.settings.product_image | img_url: '600x' }}"
+            alt="MOG Cream Product"
+            loading="eager"
+          >
+        {% else %}
+          <img
+            src="{{ 'product-shot.jpg' | asset_url }}"
+            alt="MOG Cream Product"
+            loading="eager"
+          >
+        {% endif %}
+        <div class="product-price-tag">
+          <sub>$</sub>{{ section.settings.price }}<sub>.00</sub>
+        </div>
+        <p style="font-size:12px;color:var(--gray);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;">
+          + Free US Shipping over $30
+        </p>
+        <br>
+        <a href="{{ section.settings.primary_url }}" class="btn-primary" style="width:100%;text-align:center;display:block;">
+          Add to Cart
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow Text", "default": "Built For Men" },
+    { "type": "textarea", "id": "headline", "label": "Headline", "default": "SHARPER\nJAWLINE.\nDEFINED." },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline", "default": "Advanced peptide formula targets visible aging at the source — firming your neck, tightening your jawline, and refreshing your skin for a stronger, more defined look." },
+    { "type": "text", "id": "badge", "label": "Badge Text", "default": "⭐ 4.9/5 — 2,400+ Reviews" },
+    { "type": "image_picker", "id": "product_image", "label": "Product Image" },
+    { "type": "text", "id": "price", "label": "Price", "default": "23" },
+    { "type": "text", "id": "primary_cta", "label": "Primary CTA Label", "default": "Get MOG Cream — $23" },
+    { "type": "url", "id": "primary_url", "label": "Primary CTA URL" },
+    { "type": "text", "id": "secondary_cta", "label": "Secondary CTA Label", "default": "See Results" },
+    { "type": "url", "id": "secondary_url", "label": "Secondary CTA URL" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "−39%" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Visible neck lines" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "−39%", "label": "Visible neck lines" } },
+        { "type": "stat", "settings": { "number": "+24%", "label": "Skin firmness" } },
+        { "type": "stat", "settings": { "number": "28", "label": "Day results" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

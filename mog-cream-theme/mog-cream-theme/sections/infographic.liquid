@@ -1,0 +1,32 @@
+<section class="infographic-section section-pad">
+  <div class="section-max">
+    <div class="section-label">{{ section.settings.label }}</div>
+    <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | img_url: '1200x' }}"
+        alt="{{ section.settings.image_alt }}"
+        loading="lazy"
+      >
+    {% else %}
+      <img
+        src="{{ 'infographic.jpg' | asset_url }}"
+        alt="MOG Cream Benefits Infographic"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Infographic",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "The Full Picture" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "BUILT FOR MEN.\nPROVEN BY SCIENCE." },
+    { "type": "image_picker", "id": "image", "label": "Infographic Image" },
+    { "type": "text", "id": "image_alt", "label": "Image Alt Text", "default": "MOG Cream Benefits Infographic" }
+  ],
+  "presets": [{ "name": "Infographic" }]
+}
+{% endschema %}

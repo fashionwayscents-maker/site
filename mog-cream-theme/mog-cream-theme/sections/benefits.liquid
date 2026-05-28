@@ -1,0 +1,49 @@
+<section id="benefits" class="section-pad">
+  <div class="section-max">
+    <div class="section-label">{{ section.settings.label }}</div>
+    <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+    <p class="section-body">{{ section.settings.body }}</p>
+    <div class="benefits-grid">
+      {% for block in section.blocks %}
+        <div class="benefit-card" {{ block.shopify_attributes }}>
+          <div class="benefit-icon">{{ block.settings.icon }}</div>
+          <div class="benefit-title">{{ block.settings.title }}</div>
+          <div class="benefit-desc">{{ block.settings.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "Why MOG Cream" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "FAST-ACTING.\nVISIBLE RESULTS." },
+    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Non-greasy, lightweight formula absorbs instantly — zero residue, all results." }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Card",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Emoji Icon", "default": "💎" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Sharper Jawline" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Peptide complex firms and tightens the jawline area for a visibly more defined look." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits",
+      "blocks": [
+        { "type": "benefit", "settings": { "icon": "💎", "title": "Sharper Jawline", "description": "Peptide complex firms and tightens the jawline area for a visibly more defined, chiseled look." } },
+        { "type": "benefit", "settings": { "icon": "💪", "title": "Firmer Skin", "description": "Tripeptide technology visibly firms and tightens skin elasticity around the neck and chin." } },
+        { "type": "benefit", "settings": { "icon": "💧", "title": "Deep Hydration", "description": "Hyaluronic acid locks in moisture at the deepest layers for all-day hydration without grease." } },
+        { "type": "benefit", "settings": { "icon": "⚡", "title": "Fast Absorption", "description": "Non-sticky finish absorbs in seconds. No white cast. No residue. Just results you can feel." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+<section id="ingredients" class="ingredients-section section-pad">
+  <div class="section-max">
+    <div class="ingredients-layout">
+      <div>
+        <div class="section-label">{{ section.settings.label }}</div>
+        <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+        <p class="section-body">{{ section.settings.body }}</p>
+        <div class="formula-badge">
+          <div class="formula-title">THE<br><span>MOG</span><br>EDGE</div>
+          <div class="formula-desc">{{ section.settings.formula_desc }}</div>
+        </div>
+      </div>
+      <div>
+        <div class="ingredient-list">
+          {% for block in section.blocks %}
+            <div class="ingredient-item" {{ block.shopify_attributes }}>
+              <div class="ing-num">0{{ forloop.index }}</div>
+              <div>
+                <div class="ing-name">{{ block.settings.name }}</div>
+                <div class="ing-desc">{{ block.settings.description }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "The Formula" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "ADVANCED\nPEPTIDE\nFORMULA" },
+    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Every ingredient is chosen for one purpose: results you can see and feel within 28 days." },
+    { "type": "textarea", "id": "formula_desc", "label": "Formula Description", "default": "Clean, clinically-backed ingredients with zero parabens, sulfates, or phthalates. Formulated specifically for men who demand more from their skincare." }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Ingredient Name", "default": "Tripeptide Complex" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Visibly firms and tightens the appearance of skin." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "name": "Tripeptide Complex", "description": "Visibly firms and tightens the appearance of skin. The core technology behind MOG Cream's jawline-defining results." } },
+        { "type": "ingredient", "settings": { "name": "Hyaluronic Acid", "description": "Deeply hydrates and supports skin elasticity. Holds up to 1,000x its weight in water to plump and firm." } },
+        { "type": "ingredient", "settings": { "name": "Caffeine", "description": "Helps reduce puffiness and refresh tired skin. Instantly revitalizes the under-chin and neck area." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,51 @@
+<section id="results" class="section-pad">
+  <div class="section-max">
+    <div class="section-label">{{ section.settings.label }}</div>
+    <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
+    <p class="section-body">{{ section.settings.body }}</p>
+    <div class="results-grid">
+      {% for block in section.blocks %}
+        <div class="result-card" {{ block.shopify_attributes }}>
+          <div class="result-num">{{ block.settings.number }}</div>
+          <div>
+            <div class="result-label">{{ block.settings.label }}</div>
+            <div class="result-desc">{{ block.settings.description }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Results",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section Label", "default": "Proven Results" },
+    { "type": "textarea", "id": "title", "label": "Title", "default": "DEFINED IN\n28 DAYS." },
+    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Based on a consumer study of men who used MOG Cream once daily for 28 days." }
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Result Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "−39%" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Visible Neck Lines" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Significant reduction in visible neck lines after a full 28-day protocol." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results",
+      "blocks": [
+        { "type": "result", "settings": { "number": "−39%", "label": "Visible Neck Lines", "description": "Significant reduction in visible neck lines and sagging after a full 28-day protocol." } },
+        { "type": "result", "settings": { "number": "+24%", "label": "Skin Firmness", "description": "Measurable increase in skin firmness and elasticity around the jaw, chin, and neck." } },
+        { "type": "result", "settings": { "number": "93%", "label": "Saw Improvement", "description": "Of users reported visible improvement in jawline definition within the first two weeks." } },
+        { "type": "result", "settings": { "number": "Day 1", "label": "Feels Different", "description": "Skin feels visibly smoother, more hydrated, and refreshed from the very first application." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

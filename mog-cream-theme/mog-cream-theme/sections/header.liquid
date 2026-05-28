@@ -1,0 +1,33 @@
+<nav class="site-nav">
+  <a href="/" class="nav-logo">MOG <span>CREAM</span></a>
+  <ul class="nav-links">
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#ingredients">Formula</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li>
+      <a href="{{ section.settings.cta_url }}" class="nav-cta">
+        {{ section.settings.cta_label }}
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Buy Now — $23"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    }
+  ]
+}
+{% endschema %}

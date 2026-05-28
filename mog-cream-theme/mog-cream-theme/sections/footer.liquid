@@ -1,0 +1,49 @@
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">MOG <span>CREAM</span></div>
+      <div class="footer-tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.shop_url }}" class="btn-primary" style="display:inline-block;font-size:13px;padding:12px 24px;">
+        Shop Now
+      </a>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#ingredients">Formula</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#howto">How To Use</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Customer Care</div>
+      <ul class="footer-links">
+        <li><a href="{{ section.settings.faq_url }}">FAQ</a></li>
+        <li><a href="{{ section.settings.contact_url }}">Contact Us</a></li>
+        <li><a href="{{ section.settings.returns_url }}">Return Policy</a></li>
+        <li><a href="{{ section.settings.shipping_url }}">Shipping Info</a></li>
+        <li><a href="{{ shop.privacy_policy.url }}">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} MOG Cream. All rights reserved.</span>
+    <span>Paraben-free · Sulfate-free · Made in USA</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "tagline", "label": "Brand Tagline", "default": "Jawline Definition & Skin Firming Peptide Cream. Built for men who demand more from their skincare." },
+    { "type": "url", "id": "shop_url", "label": "Shop URL" },
+    { "type": "url", "id": "faq_url", "label": "FAQ URL" },
+    { "type": "url", "id": "contact_url", "label": "Contact URL" },
+    { "type": "url", "id": "returns_url", "label": "Returns URL" },
+    { "type": "url", "id": "shipping_url", "label": "Shipping URL" }
+  ]
+}
+{% endschema %}
