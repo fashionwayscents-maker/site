@@ -3,7 +3,21 @@
     <div class="section-label">{{ section.settings.label }}</div>
     <h2 class="section-title">{{ section.settings.title | newline_to_br }}</h2>
     <p class="section-body">{{ section.settings.body }}</p>
-    <div class="results-grid">
+
+    <!-- Before/After Transformations -->
+    <div style="display:flex;flex-direction:column;gap:24px;margin-top:64px;">
+      <div style="position:relative;border:1px solid var(--border);border-radius:4px;overflow:hidden;">
+        <img src="{{ 'transformation-1.png' | asset_url }}" alt="MOG Cream Before and After — Transformation 1" style="width:100%;display:block;">
+        <div style="position:absolute;top:16px;left:16px;background:rgba(8,8,8,0.75);border:1px solid var(--border);padding:6px 14px;border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#888;">28 Day Result</div>
+      </div>
+      <div style="position:relative;border:1px solid var(--border);border-radius:4px;overflow:hidden;">
+        <img src="{{ 'transformation-2.png' | asset_url }}" alt="MOG Cream Before and After — Transformation 2" style="width:100%;display:block;">
+        <div style="position:absolute;top:16px;left:16px;background:rgba(8,8,8,0.75);border:1px solid var(--border);padding:6px 14px;border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#888;">28 Day Result</div>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="results-grid" style="margin-top:24px;">
       {% for block in section.blocks %}
         <div class="result-card" {{ block.shopify_attributes }}>
           <div class="result-num">{{ block.settings.number }}</div>
@@ -23,7 +37,7 @@
   "settings": [
     { "type": "text", "id": "label", "label": "Section Label", "default": "Proven Results" },
     { "type": "textarea", "id": "title", "label": "Title", "default": "DEFINED IN\n28 DAYS." },
-    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Based on a consumer study of men who used MOG Cream once daily for 28 days." }
+    { "type": "textarea", "id": "body", "label": "Body Text", "default": "Real results from real customers. Used once daily for 28 days." }
   ],
   "blocks": [
     {
