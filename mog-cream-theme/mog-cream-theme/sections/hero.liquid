@@ -10,7 +10,7 @@
       <p class="hero-sub">{{ section.settings.subheadline }}</p>
       <div class="hero-actions">
         <a href="{{ section.settings.primary_url }}" class="btn-primary">{{ section.settings.primary_cta }}</a>
-        <a href="{{ section.settings.secondary_url }}" class="btn-secondary">{{ section.settings.secondary_cta }}</a>
+        <a href="#results" class="btn-secondary" onclick="event.preventDefault();document.getElementById('results').scrollIntoView({behavior:'smooth'});">{{ section.settings.secondary_cta }}</a>
       </div>
       <div class="hero-stats">
         {% for block in section.blocks %}
